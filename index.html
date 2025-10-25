@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FREE FIRE CHAMPIONSHIP</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+      color: #fff;
+      line-height: 1.6;
+    }
+    header {
+      background: url('https://imgur.com/gallery/wallpaper-dinos-free-fire-QrnXi7W#b5WYIcx') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    header * {
+      z-index: 2;
+      position: relative;
+    }
+    header h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px #ff0000;
+      color: #ff3b3b;
+    }
+    header p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+    .btn {
+      padding: 12px 30px;
+      background: #e74c3c;
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #c0392b;
+      transform: scale(1.05);
+    }
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff3b3b;
+      text-align: center;
+    }
+    .prize {
+      background: #2c3e50;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .rules ul {
+      list-style: none;
+    }
+    .rules li {
+      background: #222;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 5px solid #e74c3c;
+      border-radius: 5px;
+    }
+    .countdown {
+      text-align: center;
+      font-size: 2rem;
+      margin: 20px 0;
+      color: #f39c12;
+    }
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #111;
+      color: #aaa;
+    }
+    form {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background: #e74c3c;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header>
+    <h1> FREE FIRE CHAMPIONSHIP </h1>
+    <p>Join the biggest Free Fire battle of the year! Win cash prizes, glory, and exclusive rewards!</p>
+    <a href="#register" class="btn">Register Now</a>
+  </header>
+
+  <!-- Prize Pool -->
+  <section class="prize">
+    <h2> Prize Pool: 300</h2>
+    <p>1st Place: 300<br>
+  </section>
+
+  <!-- Countdown Timer -->
+  <section>
+    <h2> Tournament Starts In</h2>
+    <div id="countdown" class="countdown">Loading...</div>
+    <script>
+      const eventDate = new Date("December 15, 2024 10:00:00").getTime();
+      const countdown = setInterval(() => {
+        const now = new Date().getTime();
+        const gap = eventDate - now;
+        const d = Math.floor(gap / (1000 * 60 * 60 * 24));
+        const h = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((gap % (1000 * 60)) / 1000);
+        document.getElementById("countdown").innerHTML = `${d}d ${h}h ${m}m ${s}s`;
+        if (gap < 0) {
+          clearInterval(countdown);
+          document.getElementById("countdown").innerHTML = "Tournament Live!";
+        }
+      }, 1000);
+    </script>
+  </section>
+
+  <!-- Rules -->
+  <section class="rules">
+    <h2> Tournament Rules</h2>
+    <ul>
+      <li> 4v4 Squad Match (Custom Room)</li>
+      <li> Game Mode: Battle Royale</li>
+      <li> No hacks or cheats allowed (strict ban policy)</li>
+      <li> Match recording may be required for verification</li>
+      <li> Late joiners will not be allowed</li>
+    </ul>
+  </section>
+
+  <!-- Registration -->
+  <section id="register">
+    <h2> Register Your Team</h2>
+    <form action="https://formspree.io/f/your-form-id" method="POST">
+      <input type="text" name="team_name" placeholder="Team Name" required>
+      <input type="text" name="leader_name" placeholder="Team Leader Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="text" name="discord" placeholder="Discord ID" required>
+      <input type="text" name="ff_id" placeholder="Free Fire ID (Leader)" required>
+      <textarea name="message" placeholder="Other Team Members (Name & FF ID)"></textarea>
+      <button type="submit">Submit Registration</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p> FREE FIRE CHAMPIONSHIP | Contact: 8186966661| Discord: <a href="#">Join Server</a></p>
+    <p>Powered by VH CROUP. Not affiliated with Garena.</p>
+  </footer>
+
+</body>
+</html>
